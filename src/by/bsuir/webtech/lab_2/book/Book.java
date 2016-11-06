@@ -7,6 +7,22 @@ public class Book {
     private String name;
     private String bookType;
 
+    @Override
+    public boolean equals(Object object) {
+        Book book = (Book)object;
+        if ((book.getName().equals(this.name)) && (book.getBookType().equals(this.bookType))) {
+            return true;
+        }
+        return false;
+    }
+
+    public Book() {}
+
+    public Book(String name,String bookType) {
+        this.name = name;
+        this.bookType = bookType;
+    }
+
     public void setBookType(String bookType) {
         this.bookType = bookType;
     }

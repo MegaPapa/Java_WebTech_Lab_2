@@ -8,9 +8,12 @@ import java.util.ArrayList;
  * Created by Max on 06.11.2016.
  */
 public interface IDAO {
-    final int BOOKS_ON_PAGE = 5;
-    public ArrayList<Book> getBooksForPage(int page);
-    public Book getNamedBook(String name);
-    public void addBookToFile(Book book);
-    public void deleteBookFromFile(String name);
+    //Constants
+    public final String USER_FILE_PATH = "./data/users.txt";
+    public final String BOOKS_DATA_FILE_PATH = "./data/books.txt";
+
+    //Methods
+    public Book getObjectByName(String name);
+    public void addNewObjectToFile(Object object);
+    public void deleteObjectFromFile(String name);
 }
