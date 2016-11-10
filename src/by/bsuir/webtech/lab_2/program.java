@@ -1,24 +1,49 @@
 package by.bsuir.webtech.lab_2;
 
-import by.bsuir.webtech.lab_2.book.Book;
-import by.bsuir.webtech.lab_2.dao.BooksDAO;
+import by.bsuir.webtech.lab_2.bean.users.AbstractUser;
+import by.bsuir.webtech.lab_2.bean.users.Administrator;
+import by.bsuir.webtech.lab_2.bean.users.User;
+import by.bsuir.webtech.lab_2.controller.user_controller.UserController;
+
+import java.util.Scanner;
 
 /**
  * Created by Max on 06.11.2016.
  */
 public class program {
+    private static void adminLoop(String name) {
+        Administrator administrator = new Administrator();
+        System.out.println("Hi, " + name);
+        while (true) {
+            /* Admin command loop */
+        }
+    }
+
+    private static void userLoop(String name) {
+        User user = new User();
+        System.out.println("Hi, "+ name);
+        while (true) {
+            /* User command loop */
+        }
+    }
+
     public static void main(String[] args) {
-        BooksDAO booksDao = new BooksDAO();
-        Book tmpBook = booksDao.getObjectByName("Война и мир - Лев Толстой");
-        if (tmpBook != null)
-            System.out.println(tmpBook.getName() + "/" + tmpBook.getBookType());
-        else
-            System.out.println("not found");
-        Book newBook = new Book();
-        booksDao.deleteObjectFromFile("Филосовия Java - Брюс Эккель");
-        /*ArrayList<Book> bookArrayList = booksDao.getBooksFromFile(1);
-        for (int i = 0; i < bookArrayList.size(); i++) {
-            System.out.println(bookArrayList.get(i).getName());
-        }*/
+        AbstractUser abstractUser = new AbstractUser();
+        AbstractUser user;
+        Scanner scanner = new Scanner(System.in);
+        String name;
+        String password;
+        do {
+            System.out.println("Enter your name: ");
+            name = scanner.next();
+            System.out.println("Enter your password: ");
+            password = scanner.next();
+        } while ( (user = abstractUser.authorization(name,password)) == null);
+        if (user.isAdmin()) {
+            adminLoop(name);
+        }
+        else {
+            userLoop(name);
+        }
     }
 }

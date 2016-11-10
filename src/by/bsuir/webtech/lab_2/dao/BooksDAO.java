@@ -1,7 +1,6 @@
 package by.bsuir.webtech.lab_2.dao;
 
-import by.bsuir.webtech.lab_2.book.Book;
-import com.sun.org.apache.bcel.internal.generic.NEW;
+import by.bsuir.webtech.lab_2.bean.books.Book;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -77,7 +76,7 @@ public class BooksDAO implements IDAO{
     }
 
     @Override
-    public Book getObjectByName(String name) {
+    public Object getObjectByName(String name) {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(BOOKS_DATA_FILE_PATH))) {
             int bookIndex = findBookIndex(name);
             if (bookIndex == INVALID_INDEX)
